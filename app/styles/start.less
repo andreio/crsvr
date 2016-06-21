@@ -9,3 +9,80 @@
 body {
   font-family: "Proxima Nova Regular", "Segoe UI", Roboto, "Droid Sans", "Helvetica Neue", Arial, sans-serif;
 }
+
+table.data {
+  width: 1150px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: separate;
+  border-spacing: 10px;
+
+  tr {
+    padding: 4px 3px;
+    border: none;
+    td {
+      text-align: center;
+      &:first-of-type {
+        text-align: left;
+      }
+    }
+  }
+  thead {
+    tr {
+      font-weight: 500;
+    }
+
+  }
+  tbody {
+    tr {
+      &:not(:first-of-type) {
+        margin-bottom: 10px;
+      }
+      height: 32px;
+      outline: 2px solid;
+      &.running {
+        &::before{
+          background: radial-gradient(farthest-corner at -1000px -174px, #4C85B7 -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%);
+          position: absolute;
+          width:1150px;
+          height:40px;
+          content:"";
+          margin-left:-10px;
+        }
+        outline-color: @runningColor;
+        //height:350px;
+      }
+      &.running::before{
+
+      }
+      &.pending {
+        .background {
+          background-image: radial-gradient(ellipse farthest-corner at 1px 1px, @pendingColor -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%)
+        }
+        outline-color: @pendingColor;
+      }
+      &.rejected {
+        .background {
+          background-image: radial-gradient(ellipse farthest-corner at 1px 1px, @rejectedColor -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%)
+        }
+        outline-color: @rejectedColor;
+      }
+      &.accepted {
+        .background {
+          background-image: radial-gradient(ellipse farthest-corner at 1px 1px, @acceptedColor -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%)
+        }
+        outline-color: @acceptedColor;
+      }
+      &.complete {
+        .background {
+          background-image: radial-gradient(ellipse farthest-corner at 1px 1px, @completeColor -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%)
+        }
+        outline-color: @completeColor;
+      }
+      td {
+        background: transparent;
+      }
+    }
+  }
+
+}
