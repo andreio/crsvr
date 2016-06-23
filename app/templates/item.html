@@ -1,0 +1,26 @@
+<td class="cell changelist" ng-if="item.type==='firewall'">{{item.number}}</td>
+<td class="cell changelist" ng-if="item.type==='build'">{{item.machine}}_{{item.number}}</td>
+<td class="cell owner">{{item.owner}}</td>
+<td class="cell time-started">{{item.timeStarted}}</td>
+<td class="cell state">{{item.state}}</td>
+<td class="cell metrics">
+    <div class="progress-bar-wrapper metrics">
+        <div class="progress-bar" ng-style="{transform: 'scaleX({{item.progress.metrics}})'}"></div>
+    </div>
+</td>
+<td class="cell build">
+    <div class="progress-bar-wrapper build">
+        <div class="progress-bar" ng-style="{transform:'scaleX({{item.progress.build}})'}"></div>
+    </div>
+</td>
+<td class="cell unit-test">
+    <div class="progress-bar-wrapper metrics">
+        <div class="progress-bar" ng-style="{transform:'scaleX({{item.progress.unitTest}})'}"></div>
+    </div>
+</td>
+<td class="cell functional-test">
+    <div class="progress-bar-wrapper functional-test">
+        <div class="progress-bar" ng-style="{transform:'scaleX({{item.progress.functionalTest}})'}"></div>
+    </div>
+</td>
+

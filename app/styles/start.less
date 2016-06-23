@@ -1,6 +1,7 @@
 @imgPath: "<%= imagePath %>";
 
-@runningColor: #4C85B7;
+@grey: #C6C5C5;
+@runningColor: #427FB3;
 @pendingColor: #CFCFCF;
 @rejectedColor: #BC0008;
 @completeColor: #568D30;
@@ -8,6 +9,7 @@
 
 body {
   font-family: "Proxima Nova Regular", "Segoe UI", Roboto, "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
 }
 
 table.data {
@@ -21,6 +23,7 @@ table.data {
     padding: 4px 3px;
     border: none;
     td {
+      padding: 4px 0;
       text-align: center;
       &:first-of-type {
         text-align: left;
@@ -30,6 +33,11 @@ table.data {
   thead {
     tr {
       font-weight: 500;
+      td{
+        &.metrics, &.build, &.unit-test, &.functional-test{
+          width:100px;
+        }
+      }
     }
 
   }
@@ -41,48 +49,81 @@ table.data {
       height: 32px;
       outline: 2px solid;
       &.running {
-        &::before{
-          background: radial-gradient(farthest-corner at -1000px -174px, #4C85B7 -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%);
-          position: absolute;
-          width:1150px;
-          height:40px;
-          content:"";
-          margin-left:-10px;
+        td:first-of-type {
+          .radialGradient(@runningColor)
         }
         outline-color: @runningColor;
-        //height:350px;
-      }
-      &.running::before{
-
+        color: @runningColor;
+        .progress-bar{
+          background-color: @runningColor;
+        }
       }
       &.pending {
-        .background {
-          background-image: radial-gradient(ellipse farthest-corner at 1px 1px, @pendingColor -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%)
+        td:first-of-type {
+          .radialGradient(@pendingColor)
         }
         outline-color: @pendingColor;
+        color: @pendingColor;
       }
       &.rejected {
-        .background {
-          background-image: radial-gradient(ellipse farthest-corner at 1px 1px, @rejectedColor -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%)
+        td:first-of-type {
+          .radialGradient(@rejectedColor)
         }
         outline-color: @rejectedColor;
+        color: @rejectedColor;
+        .progress-bar{
+          background-color: @rejectedColor;
+        }
       }
       &.accepted {
-        .background {
-          background-image: radial-gradient(ellipse farthest-corner at 1px 1px, @acceptedColor -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%)
+        td:first-of-type {
+          .radialGradient(@acceptedColor)
         }
         outline-color: @acceptedColor;
+        color: @acceptedColor;
+        .progress-bar{
+          background-color: @acceptedColor;
+        }
       }
       &.complete {
-        .background {
-          background-image: radial-gradient(ellipse farthest-corner at 1px 1px, @completeColor -200%, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%)
+        td:first-of-type {
+          .radialGradient(@completeColor)
         }
         outline-color: @completeColor;
+        color: @completeColor;
+        .progress-bar{
+          background-color: @completeColor;
+        }
       }
       td {
-        background: transparent;
+        &.cell.metrics, &.cell.build, &.cell.unit-test, &.cell.functional-test {
+          text-align: center;
+          .progress-bar-wrapper {
+            outline: 2px solid @grey;
+            width: 48px;
+            height: 32px;
+            margin:auto;
+            text-align: left;
+            .progress-bar {
+              width:100%;
+              height:100%;
+              transform-origin: left center ;
+            }
+          }
+        }
       }
     }
   }
+}
 
+.radialGradient(@background) {
+  &::before {
+    background: radial-gradient(circle farthest-corner at 0 0, fade(@background, 10%) 0, rgba(0, 0, 0, 0) 100%, #FFFFFF 0%);
+    position: absolute;
+    width: 1150px;
+    height: 40px;
+    content: '';
+    margin-left: -10px;
+    margin-top: -9px;
+  }
 }

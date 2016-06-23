@@ -1,5 +1,5 @@
 /*global require, process*/
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         "pkg": "<json:package.json>",
@@ -25,11 +25,6 @@ module.exports = function(grunt) {
                     "force": true
                 }
             },
-            "capiMd": {
-                "src": [
-                    "CAPI.md"
-                ]
-            }
         },
         "jshint": {
             "all": [
@@ -93,6 +88,12 @@ module.exports = function(grunt) {
                     },
                     {
                         "src": [
+                            "data.json"
+                        ],
+                        "dest": "dist/local/data"
+                    },
+                    {
+                        "src": [
                             "**"
                         ],
                         "cwd": "temp/build/",
@@ -105,6 +106,14 @@ module.exports = function(grunt) {
                         ],
                         "cwd": "app/assets/",
                         "dest": "dist/local/assets/",
+                        "expand": true
+                    },
+                    {
+                        "src": [
+                            "**"
+                        ],
+                        "cwd": "app/templates/",
+                        "dest": "dist/local/templates/",
                         "expand": true
                     }
                 ]
@@ -142,12 +151,6 @@ module.exports = function(grunt) {
                             "README.md"
                         ],
                         "dest": "dist/meta/README.md"
-                    },
-                    {
-                        "src": [
-                            "CAPI.md"
-                        ],
-                        "dest": "dist/meta/CAPI.md"
                     }
                 ]
             }
@@ -177,7 +180,8 @@ module.exports = function(grunt) {
                     "test/**/*.js",
                     "Gruntfile.js",
                     "index.html",
-                    "jshintrc"
+                    "jshintrc",
+                    "data.json"
                 ],
                 "tasks": [
                     "local"
@@ -346,12 +350,12 @@ module.exports = function(grunt) {
 
 
     // Define grunt tasks
-    grunt.registerTask("localTemplate", ["templateFile:local","templateFile:localCSS"]);
-    grunt.registerTask("prodTemplate", ["templateFile:prod","templateFile:prodCSS","templateFile:prodEnv"]);
-    grunt.registerTask("local", ["clean:build","jshint","copy:prepareBuild","less:local","babel:build","templateFile:localEnv","copy:local","localTemplate","mocha:dot"]);
-    grunt.registerTask("localStyle", ["less:local","templateFile:localCSS"]);
-    grunt.registerTask("localAssets", ["clean:localAssets","copy:localAssets"]);
-    grunt.registerTask("rel", ["clean:build","jshint","copy:prepareBuild","less:prod","babel:build","copy:prod","prodTemplate","mocha:dot","requirejs"]);
-    grunt.registerTask("default", ["local","parallel:watch"]);
+    grunt.registerTask("localTemplate", ["templateFile:local", "templateFile:localCSS"]);
+    grunt.registerTask("prodTemplate", ["templateFile:prod", "templateFile:prodCSS", "templateFile:prodEnv"]);
+    grunt.registerTask("local", ["clean:build", "jshint", "copy:prepareBuild", "less:local", "babel:build", "templateFile:localEnv", "copy:local", "localTemplate", "mocha:dot"]);
+    grunt.registerTask("localStyle", ["less:local", "templateFile:localCSS"]);
+    grunt.registerTask("localAssets", ["clean:localAssets", "copy:localAssets"]);
+    grunt.registerTask("rel", ["clean:build", "jshint", "copy:prepareBuild", "less:prod", "babel:build", "copy:prod", "prodTemplate", "mocha:dot", "requirejs"]);
+    grunt.registerTask("default", ["local", "parallel:watch"]);
 
 };

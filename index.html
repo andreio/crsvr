@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<container class="app">
+<container class="app" ng-controller="itemsController">
     <table class="data">
         <thead>
         <tr>
@@ -26,56 +26,8 @@
         </tr>
         </thead>
         <tbody>
-            <tr class="item pending">
-                <td class="cell changelist">Tenrox-R1_1235</td>
-                <td class="cell owner"></td>
-                <td class="cell time-started"></td>
-                <td class="cell state">Pending</td>
-                <td class="cell metrics"></td>
-                <td class="cell build"></td>
-                <td class="cell unit-test"></td>
-                <td class="cell functional-test"></td>
-            </tr>
-            <tr class="item running">
-                <td class="cell changelist">432462</td>
-                <td class="cell owner">jtuck</td>
-                <td class="cell time-started">4/18/2014 12:12pm</td>
-                <td class="cell state">Running</td>
-                <td class="cell metrics"></td>
-                <td class="cell build"></td>
-                <td class="cell unit-test"></td>
-                <td class="cell functional-test"></td>
-            </tr>
-            <tr class="item rejected">
-                <td class="cell changelist">432461</td>
-                <td class="cell owner">samy</td>
-                <td class="cell time-started">4/18/2014 10:53am</td>
-                <td class="cell state">Rejected</td>
-                <td class="cell metrics"></td>
-                <td class="cell build"></td>
-                <td class="cell unit-test"></td>
-                <td class="cell functional-test"></td>
-            </tr>
-            <tr class="item complete">
-                <td class="cell changelist">Tenrox-R1_1234</td>
-                <td class="cell owner"></td>
-                <td class="cell time-started">4/17/2014 9:42am</td>
-                <td class="cell state">Complete</td>
-                <td class="cell metrics"></td>
-                <td class="cell build"></td>
-                <td class="cell unit-test"></td>
-                <td class="cell functional-test"></td>
-            </tr>
-            <tr class="item accepted">
-                <td class="cell changelist">432459</td>
-                <td class="cell owner">samy</td>
-                <td class="cell time-started">4/17/2014 9:42am</td>
-                <td class="cell state">Accepted</td>
-                <td class="cell metrics"></td>
-                <td class="cell build"></td>
-                <td class="cell unit-test"></td>
-                <td class="cell functional-test"></td>
-            </tr>
+        <tr class="item {{item.state}}" ng-repeat="item in data.items track by item.id"
+            ng-include="'templates/item.html'"></tr>
         </tbody>
     </table>
 </container>

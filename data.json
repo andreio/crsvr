@@ -1,0 +1,92 @@
+[
+  {
+    "id": 0,
+    "type": "firewall",
+    "machine": null,
+    "number": 432462,
+    "owner": "jtuck",
+    "timeStarted": 1397823120000,
+    "state": "running",
+    "progress": {
+      "metrics": 0.7,
+      "build": 0.1,
+      "unitTest": 0.4,
+      "functionalTest": 0
+    }
+  },
+  {
+    "id": 1,
+    "type": "build",
+    "machine": "rwrweR",
+    "number": 432462,
+    "owner": "jtuck",
+    "timeStarted": 1397823120000,
+    "state": "rejected",
+    "progress": {
+      "metrics": 0.4,
+      "build": 0.1,
+      "unitTest": 0,
+      "functionalTest": 0.8
+    }
+  },
+  {
+    "id": 2,
+    "type": "firewall",
+    "machine": null,
+    "number": 432462,
+    "owner": "jtuck",
+    "timeStarted": 1397823120000,
+    "state": "complete",
+    "progress": {
+      "metrics": 1,
+      "build": 1,
+      "unitTest": 1,
+      "functionalTest": 0
+    }
+  },
+  {
+    "id": 3,
+    "type": "firewall",
+    "machine": null,
+    "number": 432462,
+    "owner": "jtuck",
+    "timeStarted": 1397823120000,
+    "state": "accepted",
+    "progress": {
+      "metrics": 0.45,
+      "build": 0,
+      "unitTest": 1,
+      "functionalTest": 0
+    }
+  },
+  {
+    "id": 4,
+    "type": "firewall",
+    "machine": null,
+    "number": 432462,
+    "owner": "jtuck",
+    "timeStarted": 1397823120000,
+    "state": "failed",
+    "progress": {
+      "metrics": 70,
+      "build": 0,
+      "unitTest": 0,
+      "functionalTest": 0
+    }
+  },
+  {
+    "id": 5,
+    "type": "firewall",
+    "machine": null,
+    "number": 432462,
+    "owner": "jtuck",
+    "timeStarted": 1397823120000,
+    "state": "pending",
+    "progress": {
+      "metrics": 70,
+      "build": 0,
+      "unitTest": 0,
+      "functionalTest": 0
+    }
+  }
+]
